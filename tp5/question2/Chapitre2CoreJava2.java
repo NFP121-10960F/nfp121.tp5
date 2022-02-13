@@ -2,35 +2,47 @@ package question2;
 
 import java.util.List;
 import java.util.Map;
-// à  compléter
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.StringTokenizer;
 
 public class Chapitre2CoreJava2 {
 
     /**
-     * Obtention d'une liste de mots a  partir de la constante CHAPITRE2.
+     * Obtention d'une liste de mots a� partir de la constante CHAPITRE2.
      * 
      **/
     public static List<String> listeDesMots() {
-        List<String> liste = null; // à  compléter
+        List<String> liste = new ArrayList<>();
 
-        StringTokenizer st = new StringTokenizer(Chapitre2CoreJava2.CHAPITRE2,
-                "[](){};, :.\n\"");
-        // à  compléter
-
+        StringTokenizer st = new StringTokenizer(Chapitre2CoreJava2.CHAPITRE2,"[](){};, :.\n\"");
+        
+        while (st.hasMoreTokens()) {    
+            liste.add(st.nextToken());
+        }
+        
         return liste;
     }
 
     /**
      * Obtention d'une liste de couples <String,Integer>. 
-     * A chaque mot présent dans la liste, est associé son nombre d'occurrence.
+     * A chaque mot pr�?sent dans la liste, est associ�? son nombre d'occurrence.
      * 
      * @param liste la liste des mots
      */
     public static Map<String, Integer> occurrencesDesMots(List<String> liste) {
-        Map<String, Integer> table = null; // à  compléter
-        // à  compléter
-        // à  compléter
+        Map<String, Integer> table = new HashMap<>();
+        int count = 0;
+
+        for(int i = 0; i < liste.size(); i++){
+            for(int j = 0 ; j < liste.size(); j++){
+                if(liste.get(i).equals(liste.get(j)))
+                    count ++;
+            }
+            table.put(liste.get(i), count);
+            count = 0;
+        }
+        
         return table;
     }
 
